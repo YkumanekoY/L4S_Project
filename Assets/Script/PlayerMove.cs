@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += transform.right * 5.0f * Time.deltaTime;
-			
+
         }
         else
         {
@@ -30,17 +30,18 @@ public class PlayerMove : MonoBehaviour
     public void GameOver()
     {
         gameOver_object.SetActive(true);
-
+        PlayerMove pm =  this.GetComponent<PlayerMove>();
+        
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Break"))
         {
-            if (player[1])
+            if (player[1].activeSelf)
             {
-				Break();
-				Destroy(other.gameObject);
+                Break();
+                Destroy(other.gameObject);
             }
             else
             {
@@ -49,10 +50,14 @@ public class PlayerMove : MonoBehaviour
         }
         if (other.CompareTag("Through"))
         {
-            GameOver();
+            if (!player[2].activeSelf)
+            {
+                GameOver();
+            }
         }
     }
 
-	private void Break(){
-	}
+    private void Break()
+    {
+    }
 }
