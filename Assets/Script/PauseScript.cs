@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PauseScript : MonoBehaviour
 {
-
     public GameObject player;
 
     [SerializeField]
@@ -15,6 +14,7 @@ public class PauseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = new Vector3(player.transform.position.x + 1.6f, 1.2f, -10f);
         if (Input.GetKeyDown("q"))
         {
             if (pauseUIInstance == null)
@@ -26,22 +26,6 @@ public class PauseScript : MonoBehaviour
             {
                 Destroy(pauseUIInstance);
                 Time.timeScale = 1f;
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-			
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			int layerMask = ~(1 << 5);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-            {
-                //Rayが当たるオブジェクトがあった場合はそのオブジェクト名をログに表示
-                Debug.Log(hit.collider.gameObject.name);
-
-                player.transform.localScale = new Vector3(2, 2, 2);
             }
         }
     }

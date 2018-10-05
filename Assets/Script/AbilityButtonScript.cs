@@ -3,28 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AvirityButtonScript : MonoBehaviour
+public class AbilityButtonScript : MonoBehaviour
 {
     // ゲームシーンでの
     // 能力発動の為のスクリプト
 
     //ボタンのimage
     public Image mainImage;
-    public Image av1Image;
-    public Image av2Image;
-    public Image av3Image;
+    public Image ab1Image;
+    public Image ab2Image;
+    public Image ab3Image;
 
     //キャラチェンジ用エフェクト
     public GameObject player;
     public GameObject[] player_look;
     public GameObject dron;
 
+
+    public Color color1;
+    public Color color2;
+    public Color color3;
+
     private void Start()
     {
         mainImage = mainImage.GetComponent<Image>();
-        av1Image = av1Image.GetComponent<Image>();
-        av2Image = av2Image.GetComponent<Image>();
-        av3Image = av3Image.GetComponent<Image>();
+        ab1Image = ab1Image.GetComponent<Image>();
+        ab2Image = ab2Image.GetComponent<Image>();
+        ab3Image = ab3Image.GetComponent<Image>();
     }
 
     public void MainButtonDown()
@@ -39,49 +44,49 @@ public class AvirityButtonScript : MonoBehaviour
         mainImage.color = new Color(1f, 1f, 1f, 1f);
     }
 
-    public void Avirity1Enter(int av)
+    public void Ability1Enter(int ab)
     {
-        if (av == 1)
+        if (ab == 1)
         {
-            av1Image.color = new Color(0.8f, 0f, 0f, 1f);
+            ab1Image.color = color1;
         }
-        else if (av == 2)
+        else if (ab == 2)
         {
-            av2Image.color = new Color(0.8f, 0f, 0f, 1f);
+            ab2Image.color = color2;
         }
-        else if (av == 3)
+        else if (ab == 3)
         {
-            av3Image.color = new Color(0.8f, 0f, 0f, 1f);
+            ab3Image.color = color3;
         }
     }
-    public void Avirity1Exit(int av)
+    public void Ability1Exit(int ab)
     {
-        if (av == 1)
+        if (ab == 1)
         {
-            av1Image.color = new Color(1f, 1f, 1f, 1f);
+            ab1Image.color = new Color(1f, 1f, 1f, 1f);
         }
-        else if (av == 2)
+        else if (ab == 2)
         {
-            av2Image.color = new Color(1f, 1f, 1f, 1f);
+            ab2Image.color = new Color(1f, 1f, 1f, 1f);
         }
-        else if (av == 3)
+        else if (ab == 3)
         {
-            av3Image.color = new Color(1f, 1f, 1f, 1f);
+            ab3Image.color = new Color(1f, 1f, 1f, 1f);
         }
     }
-    public void Avirity1Drop(int av)
+    public void Ability1Drop(int ab)
     {
-        if (av == 1)
+        if (ab == 1)
         {
-            av1Image.color = new Color(1f, 1f, 1f, 1f);
+            ab1Image.color = new Color(1f, 1f, 1f, 1f);
         }
-        else if (av == 2)
+        else if (ab == 2)
         {
-            av2Image.color = new Color(1f, 1f, 1f, 1f);
+            ab2Image.color = new Color(1f, 1f, 1f, 1f);
         }
-        else if (av == 3)
+        else if (ab == 3)
         {
-            av3Image.color = new Color(1f, 1f, 1f, 1f);
+            ab3Image.color = new Color(1f, 1f, 1f, 1f);
         }
 
         Instantiate(dron, player.transform.position + new Vector3(0, -1f, -1), Quaternion.identity);
@@ -91,17 +96,17 @@ public class AvirityButtonScript : MonoBehaviour
         {
 
             player_look[i].SetActive(false);
-            if (av == 1)
+            if (ab == 1)
             {
                 player_look[0].SetActive(true);
             }
-            else if (av == 2)
+            else if (ab == 2)
             {
                 Rigidbody rg = player.gameObject.transform.GetComponent<Rigidbody>();
                 rg.velocity = new Vector3(0, -9.8f, 0);
                 player_look[1].SetActive(true);
             }
-            else if (av == 3)
+            else if (ab == 3)
             {
                 Rigidbody rg = player.gameObject.transform.GetComponent<Rigidbody>();
                 rg.velocity = new Vector3(0, -9.8f, 0);

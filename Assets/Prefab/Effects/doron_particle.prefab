@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4755628461859268}
   - component: {fileID: 198891740096631050}
   - component: {fileID: 199293621309298630}
-  - component: {fileID: 114685146158350698}
   m_Layer: 0
   m_Name: doron_particle
   m_TagString: Untagged
@@ -42,17 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114685146158350698
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1970593584581942}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0941e2352f14421686af57b2a84eaa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198891740096631050
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -113,7 +101,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2145771825
+  randomSeed: 432253655
   InitialModule:
     serializedVersion: 3
     enabled: 1
