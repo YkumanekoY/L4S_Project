@@ -9,16 +9,25 @@ public class Player1Script : MonoBehaviour
     private SpriteRenderer sp_r;
 
     private Rigidbody _rg;
-    private bool gravityTrigger = false;
+    private bool gravityTrigger = true;
 
     // Use this for initialization
-    void Start()
+
+    private void Awake()
     {
         sp_r = this.GetComponent<SpriteRenderer>();
+    }
+    void Start()
+    {
         _rg = this.gameObject.transform.parent.GetComponent<Rigidbody>();
         _rg.velocity = new Vector3(0, -9.8f, 0);
     }
 
+    private void OnEnable()
+    {
+        sp_r.flipY = false;
+        gravityTrigger = true;
+    }
 
     // Update is called once per frame
     void Update()
@@ -39,23 +48,23 @@ public class Player1Script : MonoBehaviour
             {
                 Ability();
             }
+
+            if (!gravityTrigger)
+            {
+                _rg.velocity = new Vector3(0, 9.8f, 0);
+            }
+            else
+            {
+                _rg.velocity = new Vector3(0, -9.8f, 0);
+            }
         }
     }
 
     private void Ability()
     {
-        if (!gravityTrigger)
-        {
-            _rg.velocity = new Vector3(0, 9.8f, 0);
-            gravityTrigger = true;
-            sp_r.flipY = true;
-        }
-        else
-        {
-            _rg.velocity = new Vector3(0, -9.8f, 0);
-            gravityTrigger = false;
-            sp_r.flipY = false;
-        }
+        gravityTrigger = !gravityTrigger;
+        sp_r.flipY = !sp_r.flipY;
+        
     }
 
 }

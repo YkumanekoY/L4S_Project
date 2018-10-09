@@ -18,4 +18,12 @@ public class TitleScript : MonoBehaviour {
 	public void startButton(){
 		SceneManager.LoadScene("main");
 	}
+
+	public void collectionButton(){
+		SceneManager.LoadScene("collection");
+	}
+
+	public void BackToTitle(){
+		SceneManager.LoadScene("title");
+	}
 }

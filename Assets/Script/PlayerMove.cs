@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     public GameObject[] player;
     public GameObject gameOver_object;
+    public GameObject clear_object;
 
     public static bool gameOverTrigger = false;
     //public GameObject[] main_object;
@@ -52,6 +53,10 @@ public class PlayerMove : MonoBehaviour
                 GameOver();
             }
         }
+
+        if(other.gameObject.tag == "goal"){
+            GameClear();
+        }
     }
 
 //ゲームオーバー系
@@ -70,5 +75,10 @@ public class PlayerMove : MonoBehaviour
         SceneManager.LoadScene("title");
     }
 
+    private void GameClear(){
+        clear_object.SetActive(true);
+        gameOverTrigger = true;
+        speed = 0f;
+    }
 
 }
